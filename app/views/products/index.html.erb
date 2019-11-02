@@ -1,40 +1,123 @@
+<!--<div class="container">-->
+
+<!--  <p id="notice"><%#= notice %></p>-->
+
+<!--    <h1>Products</h1>-->
+
+<!--  <table class="table table-bordered table-responsive table-striped table-hover">-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--      <th>Name</th>-->
+<!--      <th>Description</th>-->
+<!--      <th>Cost</th>-->
+<!--      <th>Quantity</th>-->
+<!--      <th colspan="3"></th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+
+<!--    <tbody>-->
+<%# @products.each do |product| %>
+<!--      <tr>-->
+<!--        <td><%#= product.name %></td>-->
+<!--        <td><%#= product.description %></td>-->
+<!--        <td><%#= product.cost %></td>-->
+<!--        <td><%#= product.quantity %></td>-->
+<!--        <td><%#= link_to 'Show', product , :class => "btn btn-primary"%></td>-->
+<!--        <td><%#= link_to 'Edit', edit_product_path(product) , :class => "btn btn-warning"%></td>-->
+<!--        <td><%#= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } , :class => "btn btn-danger"%>-->
+
+<!--        </td>-->
+<!--      </tr>-->
+<%# end %>
+<!--    </tbody>-->
+<!--  </table>-->
+
+<!--  <span class="icon-account-login" title="icon name" aria-hidden="true"></span>-->
+
+<%#= link_to 'New Product', new_product_path %>
+<!--</div>-->
+
+<p id="notice"><%#= notice %></p>
+
 <div class="container">
 
-  <p id="notice"><%= notice %></p>
+  <div class="row">
+    <div class="col-md-12 ml-auto">
+      <%= page_entries_info @products %> |
+      <%= paginate @products %>
+    </div>
+  </div>
 
-    <h1>Products</h1>
-
-  <table class="table table-bordered table-responsive table-striped table-hover">
-    <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Cost</th>
-      <th>Quantity</th>
-      <th colspan="3"></th>
-    </tr>
-    </thead>
-
-    <tbody>
+  <div class="row">
+    <div class="col-md-12">
+      <%= link_to 'Nuevo Producto', new_product_path, class: 'btn btn-success' %>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <% contador = 1 %>
     <% @products.each do |product| %>
-      <tr>
-        <td><%= product.name %></td>
-        <td><%= product.description %></td>
-        <td><%= product.cost %></td>
-        <td><%= product.quantity %></td>
-        <td><%= link_to 'Show', product , :class => "btn btn-primary"%></td>
-        <td><%= link_to 'Edit', edit_product_path(product) , :class => "btn btn-warning"%></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } , :class => "btn btn-danger"%>
+      <% if product.name.present? %>
+        <!--        <div class="col-md-3 ml-md-auto">-->
+        <!--          <div class="panel panel-default">-->
+        <!--            <div class="panel-heading"></div>-->
+        <!--            <div class="panel-body">-->
 
-        </td>
-      </tr>
+
+        <!--              <div class="row">-->
+        <!--                <div class="col-md-6 float-right">-->
+
+        <!--                </div>-->
+        <!--                <div class="col-md-6 float-right">-->
+
+        <!--                </div>-->
+
+        <!--              </div>-->
+        <!--            </div>-->
+        <!--          </div>-->
+        <!--        </div>-->
+        <div class="col-sm-4">
+          <div class="thumbnail">
+            <%= image_tag("galleta#{contador}.jpeg") %>
+            <div class="caption">
+              <h3><%= product.name %></h3>
+              <p>
+              <ol>
+                <li><%= product.description %></li>
+                <li><%= product.cost %></li>
+                <li><%= product.quantity %></li>
+              </ol>
+              </p>
+              <p>
+                <%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_product_path(product), :class => "btn btn-warning btn-xs" %>
+                <%= link_to "<span class='glyphicon glyphicon-trash'></span>".html_safe, product, method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-danger btn-xs" %>
+              </p>
+            </div>
+          </div>
+        </div>
+        <% if contador === 6 %>
+          <% contador = 1 %>
+        <% else %>
+          <% contador += 1 %>
+        <% end %>
+
+      <% end %>
     <% end %>
-    </tbody>
-  </table>
-
-  <span class="icon-account-login" title="icon name" aria-hidden="true"></span>
-
-  <%= link_to 'New Product', new_product_path %>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-12">
+      <%= link_to 'Nuevo Producto', new_product_path, class: 'btn btn-success' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 ml-auto">
+      <%= page_entries_info @products %> |
+      <%= paginate @products %>
+    </div>
+  </div>
 </div>
+
+
 
 

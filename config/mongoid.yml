@@ -5,7 +5,8 @@ development:
       username: 'ks_desa'
       password: 'KSDesa1@'
       hosts:
-        - 192.168.1.10:27017
+        #- 192.168.1.10:27017
+        - localhost:27017
       options:
         max_pool_size: 5
         min_pool_size: 1

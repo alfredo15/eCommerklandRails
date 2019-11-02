@@ -22,6 +22,11 @@ gem 'bson_ext'
 # JQuery
 gem 'jquery-rails'
 
+# Pginacioón
+gem 'kaminari'
+gem 'kaminari-mongoid'
+gem "bootstrap-kaminari-views"
+
 # Traducciones
 # gem 'rails-i18n'
 # gem 'routing-filter'
