@@ -7,4 +7,7 @@ class Product
   field :cost, type: Integer
   field :quantity, type: Integer
 
+  validates :name,:description,:cost,:quantity, presence: true
+  validates :quantity, :cost, numericality: { only_integer: true }
+
 end
